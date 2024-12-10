@@ -102,12 +102,20 @@ void signUp() {
             cout << "Passwords don't match. Please try again." << endl;
         }
     } while (Account.password != verify_password);
-
-    Account.status = "Active"; // Default status
+    cout<<"Enter your status(teacher/student)"<<endl;
+    getline(cin,Account.status);
     userList.push_back(Account);
     saveUser(userList);
     cout << "Account created successfully!" << endl;
 }
+void studentPage() {
+    cout << "Welcome to the Student Page! (Not yet implemented)" << endl;
+}
+
+void teacherPage() {
+    cout << "Welcome to the Teacher Page! (Not yet implemented)" << endl;
+}
+
 
 void login() {
     string ID, password;
@@ -126,8 +134,12 @@ void login() {
                 getline(cin, password);
 
                 if (user.password == password) {
-                    cout << "Login successful! Redirecting to home page..." << endl;
-                    home();
+                    cout << "Login successful! Redirecting to "<<" "<<user.status<<" "<<"page ...." << endl;
+                    if (user.status=="student"){
+                        studentPage();
+                    }else if (user.status=="teacher"){
+                        teacherPage();
+                    }
                     loggedIn = true;
                 } else {
                     cout << "Invalid password. Try again." << endl;
