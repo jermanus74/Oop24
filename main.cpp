@@ -48,6 +48,4 @@ void signUp(){
         userList.push_back(userAccount);
         saveUser(userList);
     }
-
-
 }
