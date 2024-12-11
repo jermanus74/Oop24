@@ -1,0 +1,3 @@
+"C:\CLion 2024.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\examination_handling_system.dir/objects.a
+C:\CLION2~1.3\bin\mingw\bin\ar.exe qc CMakeFiles\examination_handling_system.dir/objects.a @CMakeFiles\examination_handling_system.dir\objects1.rsp
+C:\CLION2~1.3\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\examination_handling_system.dir/objects.a -Wl,--no-whole-archive -o examination_handling_system.exe -Wl,--out-implib,libexamination_handling_system.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\examination_handling_system.dir\linkLibs.rsp

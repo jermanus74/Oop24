@@ -16,6 +16,26 @@ struct userDb {
              << "Status: " << status << endl;
     }
 };
+struct results {
+    int no_subjects;
+    string student_id;
+    string student_name;
+    string semester;
+    vector<string> subjects;
+    vector<int> scores;
+
+    void display() {
+        cout << "Student Name: " << student_name << endl
+             << "Student ID: " << student_id << endl
+             << "Results for Semester: " << semester << endl;
+
+        cout << "Subjects and Scores:" << endl;
+        for (int i = 0; i < no_subjects; ++i) {
+            cout << subjects[i] << ": " << scores[i] << endl;
+        }
+    }
+};
+
 
 const string UserProfile = "userDb.txt";
 //a storage container for user
@@ -119,12 +139,96 @@ void signUp() {
     saveUser(userList);
     cout << "Account created successfully!" << endl;
 }
+
+void examinationResults(){
+    int choice{};
+        cout<<"Check results for:\n"
+              "1.Semester I."
+              "\n2.Semester II."
+              "\n3.Semester III"
+            <<endl;
+    cout<<"Enter your choice: "<<endl;
+    cin>>choice;
+    cin.ignore();
+    switch (choice) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            cout<<"Invalid choice. Try Again"<<endl;
+    }
+};
 void studentPage() {
-    cout << "Welcome to the Student Page! (Not yet implemented)" << endl;
+    string option{};
+    for (const auto &user:userList) {
+        if (user.status=="student"){
+            cout<<"Hello"<<user.full_name<<"\t Welcome to your examination log book"<<endl;
+            do {
+               examinationResults();
+                cout<<"Do you want to continue checking results?"<<endl;
+                cout<<"Enter 'y' for yes and 'n' for no"<<endl;
+                getline(cin,option);
+            }while(option=="y"||option=="Y");
+        }
+    }
+}
+bool isStudentId(const string& id) {
+    for (const auto& user : userList) {
+        if (user.id == id && user.status == "student") {
+            return true;
+        }
+    }
+    return false;
 }
 
+
+
 void teacherPage() {
-    cout << "Welcome to the Teacher Page! (Not yet implemented)" << endl;
+    for (const auto& user:userList) {
+        string choice{};
+        string student_id;
+        double result;
+        int num_students{};
+        string date{};
+
+        if (user.status=="teacher"){
+            cout << "Hello,"<<user.full_name<<"\t Welcome to examination log fill." << endl;
+            cout<<"Do you want to add results for \n a.Semester I or b.Semester II?\n"
+                  "Enter you choice: "<<endl;
+            getline(cin,choice);
+            if (choice == "a" || choice == "b") {
+                cout<<"Enter date: "<<endl;
+                getline(cin,date);
+                string semester = (choice == "a") ? "Semester I" : "Semester II";
+                cout<<"Date:"<<date<<endl;
+                cout << "---EXAMINATION RESULTS FOR " << semester << "---" << endl;
+                cout << "How many students do have in class?\nEnter your number of students: ";
+                cin >> num_students;
+                cin.ignore();
+                    for (int i = 0; i < num_students; ++i) {
+                        cout<<"Enter student id: "<<endl;
+                        int value{};
+                        cin>>value;
+                        cin.clear();
+                        while (true) {
+                            cout << "Enter student ID: ";
+                            getline(cin,student_id);
+                            if (isStudentId(student_id)) {
+                                break; // Valid ID
+                            } else {
+                                cout << "Invalid student ID. Please try again.\n";
+                            }
+                        }
+
+
+                }
+            }
+        }
+
+    }
 }
 
 
