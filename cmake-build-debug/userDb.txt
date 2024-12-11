@@ -10,3 +10,23 @@ das gh
 321
 2323
 student
+dax
+21300
+231
+teacher
+dax paul
+23100523140012
+2323
+student
+dax
+2231
+2231
+teacher
+brandon mwandon
+123
+2323
+student
+jermanus pauline peter
+231003210
+\we23r
+student

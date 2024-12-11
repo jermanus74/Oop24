@@ -18,6 +18,7 @@ struct userDb {
 };
 
 const string UserProfile = "userDb.txt";
+//a storage container for user
 vector<userDb> userList;
 
 // Function Prototypes
@@ -35,7 +36,7 @@ int main() {
     int choice;
     do {
         cout << "\n--- User Management System ---" << endl;
-        cout << "1. Sign Up" << endl;
+        cout << "1. Login to continue" << endl;
         cout << "2. Log In" << endl;
         cout << "3. View All Users" << endl;
         cout << "4. Exit" << endl;
@@ -45,7 +46,7 @@ int main() {
 
         switch (choice) {
             case 1:
-                signUp();
+                home();
                 break;
             case 2:
                 login();
@@ -65,7 +66,17 @@ int main() {
 }
 
 void home() {
-    cout << "Welcome to the home page! (Not yet implemented)" << endl;
+    cout << "Welcome to the home page!"
+            "\n Do you have an account(Yes or No)?" << endl;
+    string choice{};
+    getline(cin,choice);
+    if (choice=="y" || choice=="Y"){
+        cout<<"Enter your details below.\n"<<endl;
+        login();
+    }else{
+        cout<<"Create new account:\n"<<endl;
+        signUp();
+    }
 }
 
 void signUp() {
@@ -175,7 +186,7 @@ vector<userDb> loadUser() {
 }
 
 void saveUser(const vector<userDb> &users) {
-    ofstream file(UserProfile, ios::trunc);
+    ofstream file(UserProfile, ios::in);
 
     if (file.is_open()) {
         for (const auto &user : users) {
