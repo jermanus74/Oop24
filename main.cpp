@@ -40,6 +40,8 @@ struct results {
 const string UserProfile = "userDb.txt";
 //a storage container for user
 vector<userDb> userList;
+vector<results> subjects;
+
 
 // Function Prototypes
 vector<userDb> loadUser();
@@ -191,20 +193,28 @@ void teacherPage() {
         string choice{};
         string student_id;
         double result;
-        int num_students{};
         string date{};
-
+        int num_students;
+        int no_course;
         if (user.status=="teacher"){
             cout << "Hello,"<<user.full_name<<"\t Welcome to examination log fill." << endl;
+
             cout<<"Do you want to add results for \n a.Semester I or b.Semester II?\n"
                   "Enter you choice: "<<endl;
             getline(cin,choice);
+
             if (choice == "a" || choice == "b") {
                 cout<<"Enter date: "<<endl;
                 getline(cin,date);
                 string semester = (choice == "a") ? "Semester I" : "Semester II";
                 cout<<"Date:"<<date<<endl;
                 cout << "---EXAMINATION RESULTS FOR " << semester << "---" << endl;
+                cout<<"Enter number of registered courses for this semester: "<<endl;
+                cin>>no_course;
+
+                for (int i = 0; i <no_course ; ++i) {
+                    cout<<"Enter course "<<1+1<<": ";
+                }
                 cout << "How many students do have in class?\nEnter your number of students: ";
                 cin >> num_students;
                 cin.ignore();
@@ -222,8 +232,6 @@ void teacherPage() {
                                 cout << "Invalid student ID. Please try again.\n";
                             }
                         }
-
-
                 }
             }
         }
