@@ -16,12 +16,15 @@ struct userDb {
              << "Status: " << status << endl;
     }
 };
-struct results {
+struct Results {
     int no_subjects;
     string student_id;
     string student_name;
     string semester;
+    string  subject_name;
+    double  marks;
     vector<string> subjects;
+
     vector<int> scores;
 
     void display() {
@@ -40,7 +43,7 @@ struct results {
 const string UserProfile = "userDb.txt";
 //a storage container for user
 vector<userDb> userList;
-vector<results> subjects;
+vector<Results> subjects;
 
 
 // Function Prototypes
@@ -192,7 +195,7 @@ void teacherPage() {
     for (const auto& user:userList) {
         string choice{};
         string student_id;
-        double result;
+        double registered_course{};
         string date{};
         int num_students;
         int no_course;
@@ -211,9 +214,24 @@ void teacherPage() {
                 cout << "---EXAMINATION RESULTS FOR " << semester << "---" << endl;
                 cout<<"Enter number of registered courses for this semester: "<<endl;
                 cin>>no_course;
+                vector<Results> scores;
+                for (int i = 0; i < no_course; ++i) {
+                    Results result;
 
-                for (int i = 0; i <no_course ; ++i) {
-                    cout<<"Enter course "<<1+1<<": ";
+                    // Input subject name
+                    cout << "Enter course " << i + 1 << ": ";
+                    getline(cin, result.subject_name);
+cin.ignore();
+                    // Input marks
+                    cout << "Enter score for this course: ";
+                    cin >> result.marks;
+                    cin.ignore(); // Clear the newline character after integer input
+
+                    // Add the result to the scores vector
+                    scores.push_back(result);
+                }
+                for (size_t i = 0; i < scores.size(); ++i) {
+                    cout << i + 1 << ". " << scores[i].subject_name << ": " << scores[i].marks << " marks" << endl;
                 }
                 cout << "How many students do have in class?\nEnter your number of students: ";
                 cin >> num_students;
