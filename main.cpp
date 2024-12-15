@@ -221,7 +221,7 @@ void teacherPage() {
                     // Input subject name
                     cout << "Enter course " << i + 1 << ": ";
                     getline(cin, result.subject_name);
-cin.ignore();
+                    cin.ignore();
                     // Input marks
                     cout << "Enter score for this course: ";
                     cin >> result.marks;
