@@ -150,7 +150,7 @@ void examinationResults(){
         cout<<"Check results for:\n"
               "1.Semester I."
               "\n2.Semester II."
-              "\n3.Semester III"
+              "\n3.Exits"
             <<endl;
     cout<<"Enter your choice: "<<endl;
     cin>>choice;

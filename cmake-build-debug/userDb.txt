@@ -38,3 +38,7 @@ brandon mwakasege
 23100523140013
 2323
 teacher
+dax paul
+23300
+123
+student
