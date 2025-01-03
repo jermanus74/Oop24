@@ -297,9 +297,8 @@ void login() {
 
 vector<userDb> loadUser() {
     vector<userDb> users;
-    ifstream file(UserProfile);
 
-    if (file.is_open()) {
+    if (ifstream file(UserProfile); file.is_open()) {
         userDb Account;
         while (getline(file, Account.full_name)) {
             getline(file, Account.id);
@@ -316,9 +315,7 @@ vector<userDb> loadUser() {
 }
 
 void saveUser(const vector<userDb> &users) {
-    ofstream file(UserProfile, ios::in);
-
-    if (file.is_open()) {
+    if (ofstream file(UserProfile, ios::in); file.is_open()) {
         for (const auto &user : users) {
             file << user.full_name << endl
                  << user.id << endl
